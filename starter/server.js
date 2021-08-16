@@ -6,7 +6,7 @@ const apiRouter = require('./src/routes/API');
 const app = express();
 app.use(express.json());
 
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: '*' }));
 app.use(cors({ origin: 'http://localhost:8080' }));
 
 app.use('/api', apiRouter);

@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const data = await StudentsRepository.getAll(req.query);
   res.status(200).json(
-    addMetaData(req, data)
+    addMetaData(req, res, data)
   );
 });
 
@@ -17,7 +17,9 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const data = await StudentsRepository.getById(req.params.id);
   if (data) {
-    res.status(200).json(data);
+    res.status(200).json(
+      addMetaData(req, res, data)
+    );
   } else {
     res.status(404).json({
       error: "incorrect id",
