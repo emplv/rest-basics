@@ -11,6 +11,9 @@ const GradesCtlr = require('../controllers/GradesController');
 router.use('/students-management/students', StudentsCtlr);
 // additional requests for student grades
 router.use('/students-management/students', GradesCtlr);
+// inside using: [GET] /students-management/students/:studentId/grades
+// [GET] /students-management/grades/:studentId 
+// [GET] /students-management/grades/:id 
 
 
 // fallback to error message

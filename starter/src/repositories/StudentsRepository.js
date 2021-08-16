@@ -1,17 +1,16 @@
 const Student = require("../models/Student");
 const MemoryStorage = require("../storages/MemoryStorage");
 
-const defaultLimit = 20;
-
 // knowledge of how and where to store data
 class StudentsRepository {
   constructor() {
     this._storage = new MemoryStorage("students");
   }
 
-  async getAll() {
+  async getAll(query) {
     try {
-      const list = await this._storage.getAll();
+      // limit, offset
+      const list = await this._storage.getAll(query);
       return list.map((storedData) => {
         const studentModel = new Student(storedData);
         return studentModel.getData();

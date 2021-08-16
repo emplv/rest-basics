@@ -1,13 +1,16 @@
 const express = require("express");
 
 const StudentsRepository = require("../repositories/StudentsRepository");
+const addMetaData = require("../utils/addMetaData");
 
 const router = express.Router();
 
 // GET list all students
 router.get("/", async (req, res) => {
-  const data = await StudentsRepository.getAll();
-  res.status(200).json(data);
+  const data = await StudentsRepository.getAll(req.query);
+  res.status(200).json(
+    addMetaData(req, data)
+  );
 });
 
 // GET a specific item
